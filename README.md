@@ -1,4 +1,4 @@
-# metaboLab
+# metLab
 An R-package designed to use with the combined targeted &amp; non-targeted (TNT) metabolomics method described in Ribbenstedt et al. 2018
 but which might come in handy for anyone working with Liquid Chromatography Mass Spectrometry (LC-MS) data.
 
