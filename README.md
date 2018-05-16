@@ -22,3 +22,5 @@ The functions included in this package are:
   mass now connected to the RT +/- 0.05 m/z is the standard setting for now.
   
  All other functions in the package are at the moment experimental and unfinished.
+
+https://doi.org/10.5281/zenodo.1248020
