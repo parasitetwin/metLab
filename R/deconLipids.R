@@ -62,7 +62,10 @@ deconLipids<-function(nSheet,fileRef=NA,fileArea=NA){
   #intensities<-intensities[,-1]
   class(intensities)<-"numeric"
   rownames(intensities)<-1:length(intensities[,1])
+  
+  #Remove lipids not present in the dataset in question
   intensities<-intensities[!is.na(rownames(intensities)),]
+  linn<-linn[match(rownames(intensities),linn$name),]
 
   #Getting low res mass spec isotopic spectrums
   for (i in 1:length(linn$formula)){
