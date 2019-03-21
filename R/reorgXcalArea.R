@@ -6,6 +6,7 @@
 #' Takes an output file from XCalibur (resaved as .xlsx), grabs the areas and reorganizes it into a one worksheet column and row ".xlsx" file
 #' @param saveName String with name of the reorganized output-file saved to your homefolder ending with ".xlsx"; default = "ReorgResults.xslx"
 #' @param saveFile Boolean parameter, deciding whether you want to save a file to your homefolder with the reorganized data or not; default = FALSE
+#' @param shortReport Boolean parameter, governing whether the input file is in long or short report format
 #' @usage Function will ask for an input file which will be organized
 #' @return The data reorganized into columns and rows will be returned as a data frame (and saved to homefolder if chosen)
 #' @export
