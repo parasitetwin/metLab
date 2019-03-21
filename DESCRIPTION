@@ -4,8 +4,7 @@ Title: Toolkit for metabolomics data
 Version: 0.1.0
 Author: Anton Ribbenstedt <anton.ribbenstedt@aces.su.se>
 Maintainer: Anton Ribbenstedt <anton.ribbenstedt@aces.su.se>
-Description: Various tools for reorganizing, processing and analyzing
-    metabolomics data.
+Description: Various tools for reorganizing, processing and analyzing metabolomics data.
 License: SU
 Depends: data.table
 Encoding: UTF-8
