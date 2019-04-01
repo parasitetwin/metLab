@@ -5,19 +5,29 @@
 #' Takes an output file from XCalibur (resaved as .xlsx), grabs the peak heights and reorganizes it into a one worksheet column and row ".xlsx" file
 #' @param saveName String with name of the reorganized output-file saved to your homefolder ending with ".xlsx"; default = "ReorgResults.xslx"
 #' @param saveFile Boolean parameter, deciding whether you want to save a file to your homefolder with the reorganized data or not; default = FALSE
+#' @param shortReport Boolean parameter, governing whether the input file is in long or short report format
 #' @usage Function will ask for an input file which will be organized
 #' @return The data reorganized into columns and rows will be returned as a data frame (and saved to homefolder if chosen)
 #' @export
 
-reorgXcalArea<-function(saveFile, saveName){
+reorgXcalHeight<-function(saveFile=TRUE, saveName="ReorgResults.xlsx", shortReport=TRUE){
   ####Loading packages needed for import and analysis of data####
   if(is.na(saveName)==TRUE){saveName="ReorgResults.xlsx"}
   if(is.na(saveFile)==TRUE){saveFile=FALSE}
   require(openxlsx)
   #require(dplyr)
   #require(reshape)
-  options(java.parameters = "-Xmx4g" )
+  #options(java.parameters = "-Xmx4g" )
   fileName<-file.choose()
+
+  ####Setting up starting parameters for short and long reports####
+  if(shortReport==TRUE){
+    startNum<-4
+    cols<-c(5)
+  } else {
+    startNum <- 3
+    cols<-c(15)
+  }
 
   ####xlsx and xlconnect operations before requiring openxlsx####
   wbList<-list()
@@ -33,7 +43,7 @@ reorgXcalArea<-function(saveFile, saveName){
   nSamples<-0
   sampleNames<-list()
 
-  for(i in 4:1000){                     #####3:1000 if LongReport
+  for(i in startNum:1000){                     #####3:1000 if LongReport
     if(wholeFile[i,1]=="Created By:")
       break
 
@@ -50,7 +60,7 @@ reorgXcalArea<-function(saveFile, saveName){
   sampleLength<-length(sampleNames)+6
 
   for(i in 1:n_comp){
-    wbList[[i]]<-read.xlsx(fileName, i, rows=c(6:sampleLength), cols=c(5), colNames=FALSE, rowNames=FALSE) ###cols=c(15) if LongReport (This is for Area)
+    wbList[[i]]<-read.xlsx(fileName, i, rows=c(6:sampleLength), cols=cols, colNames=FALSE, rowNames=FALSE) ###cols=c(15) if LongReport (This is for Area)
   }
 
   names(wbList[[i]])<-c("Area")
