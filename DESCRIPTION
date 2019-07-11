@@ -6,6 +6,7 @@ Author: Anton Ribbenstedt <anton.ribbenstedt@aces.su.se>
 Maintainer: Anton Ribbenstedt <anton.ribbenstedt@aces.su.se>
 Description: Various tools for reorganizing, processing and analyzing metabolomics data.
 License: SU
+Imports: Rdisop
 Depends: data.table, roxygen2, Rdisop
 Encoding: UTF-8
 LazyData: true
