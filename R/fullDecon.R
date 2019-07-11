@@ -12,30 +12,48 @@
 
 
 
-fullDecon<-function(fileOutputName){
+fullDecon<-function(fileOutputName, batchCorr=FALSE){
   require(openxlsx)
   cat("#############################################################\nChoose the reference file with lipids and chemical formulas:\n#############################################################\n\n")
   flush.console()
   refFileName<-file.choose()
-
+  
   cat("#################################################################\nChoose the file containing areas from samples and lipid species:\n#################################################################\n\n")
   flush.console()
   areaFileName<-file.choose()
-
+  
   wb<-createWorkbook()
   lipidTypes<-as.character(getSheetNames(refFileName))
   nSheets<-length(lipidTypes)
   deconList<-list()
-
+  
   for(i in 1:nSheets){
     deconList[[i]]<-deconLipids(i, refFileName, areaFileName)
     addWorksheet(wb,paste(lipidTypes[i]))
     writeData(wb,paste(lipidTypes[i]),deconList[[i]])
   }
-
-  if(substring(fileOutputName,nchar(fileOutputName)-4,nchar(fileOutputName))==".xlsx"){
-    saveWorkbook(wb,fileOutputName)
-  } else {saveWorkbook(wb,paste(fileOutputName,".xlsx",sep=""))}
-
+  
+  
+  
+  if(batchCorr==TRUE){
+    wb2<-createWorkbook()
+    allLipids<-data.frame()
+    
+    for(i in 1:nSheets){
+      allLipids<-rbind(allLipids,deconList[[i]])
+    }
+    
+    addWorksheet(wb2,"AllLipids")
+    writeData(wb2,"AllLipids", t(allLipids), rowNames = TRUE, colNames = TRUE)
+    if(substring(fileOutputName,nchar(fileOutputName)-4,nchar(fileOutputName))==".xlsx"){
+      saveWorkbook(wb2,fileOutputName)
+    } else {saveWorkbook(wb2,paste(fileOutputName,".xlsx",sep=""))}
+    
+  } else {
+    if(substring(fileOutputName,nchar(fileOutputName)-4,nchar(fileOutputName))==".xlsx"){
+      saveWorkbook(wb,fileOutputName)
+    } else {saveWorkbook(wb,paste(fileOutputName,".xlsx",sep=""))}
+  }
+  
   return(deconList[[i]])
 }
