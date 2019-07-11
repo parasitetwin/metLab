@@ -6,6 +6,7 @@
 #'@param fileOutputName The output name of the file you want to create
 #'@usage Put in the file names you want and the function will use deconvLipids() to create an .xlsx document with all of them deconvoluted inside
 #'@return A list with as many items as lipid types will be returned by the function
+#'@depends Rdisop MASS openxlsx
 #'@export
 
 
