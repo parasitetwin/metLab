@@ -9,6 +9,7 @@
 #'@param fileArea Reference to a ".xlsx"-file which contains samples with areas to be deconvoluted, if NULL you will be prompted to choose a file
 #'@usage First choose the reference file with your lipid fragments (see example doc. "Lipids.xlsx"), then choose the file with the areas from samples and lipids (see example doc. "DeconvExample.xlsx")
 #'@return The corrected data-set will be returned from the function as a data frame
+#'@import Rdisop MASS openxlsx
 #'@export
 
 
