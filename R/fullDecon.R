@@ -14,7 +14,7 @@
 
 fullDecon<-function(fileOutputName, batchCorr=FALSE){
   require(openxlsx)
-  cat("#############################################################\nChoose the reference file with lipids and chemical formulas:\n#############################################################\n\n")
+  cat("##############################################################\nChoose the reference file with lipids and chemical formulas:\n#############################################################\n\n")
   flush.console()
   refFileName<-file.choose()
   
