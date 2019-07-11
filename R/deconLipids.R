@@ -15,9 +15,9 @@
 
 
 deconLipids<-function(nSheet,fileRef=NA,fileArea=NA){
-  library(Rdisop)
-  library(MASS)
-  library(openxlsx)
+  require(Rdisop)
+  require(MASS)
+  require(openxlsx)
 
   ## Starts of with the deconvolution of just carnitines, since a different fragment is being monitored than for the other lipids ##
   ## Input list of Col1: Names of analytes to be deconvoluted & Col2: Chemical formula of product ion of interest (Can require some thought to figure out which one to use)
