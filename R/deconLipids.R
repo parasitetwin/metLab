@@ -60,8 +60,7 @@ deconLipids<-function(nSheet,fileRef=NA,fileArea=NA){
   intensities<-readWorkbook(fileName2, sheet=nSheet)
   sampleNames<-as.character(intensities[,1])
   intensities<-t(intensities[,-1])
-  intensities<-intensities[match(linn$name,rownames(intensities)),]
-  #intensities<-intensities[,-1]
+  intensities<-na.omit(intensities[match(linn$name,rownames(intensities)),])
   class(intensities)<-"numeric"
   rownames(intensities)<-1:length(intensities[,1])
   
